@@ -1,244 +1,110 @@
-import React, { useState } from "react";
-// Single-file React portfolio for an AI/ML professional
-// Built with Tailwind CSS utility classes (assumes Tailwind is configured in your project)
-// Uses lucide-react icons & framer-motion (optional). Replace or remove imports if not installed.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jason Moore | AI/ML Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background: #1f1f1f;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    .project, .org {
+      margin-bottom: 1.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #1f1f1f;
+      color: white;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
 
-import { Mail, Download, Github, Linkedin, FileText, Moon, Sun } from "lucide-react";
-import { motion } from "framer-motion";
+  <header>
+    <h1>Jason Moore</h1>
+    <p>Machine Learning Engineer | Data Scientist | AI Enthusiast</p>
+  </header>
 
-// --- Sample data: replace with your real content ---
-const PROFILE = {
-  name: "Your Name",
-  title: "AI / ML Engineer",
-  location: "City, Country",
-  summary:
-    "I build production ML systems and research prototypes — specializing in deep learning, MLOps, and model interpretability. I enjoy shipping performant, well-tested models and mentoring engineering teams.",
-  email: "you@example.com",
-  resume: "/resume.pdf", // put your resume at public/resume.pdf
-  socials: {
-    github: "https://github.com/yourusername",
-    linkedin: "https://www.linkedin.com/in/yourprofile",
-  },
-};
+  <section>
+    <h2>👨‍💻 Bio</h2>
+    <p>
+      I'm a passionate machine learning engineer with a background in computer science and a deep love for solving real-world problems using data. My expertise spans supervised and unsupervised learning, deep learning, and NLP. I thrive on building scalable models and deploying intelligent systems.
+    </p>
+  </section>
 
-const SKILLS = [
-  "PyTorch / TensorFlow",
-  "Python, NumPy, Pandas",
-  "ML Systems / MLOps",
-  "Model Deployment (Docker, Kubernetes)",
-  "NLP, Transformers",
-  "Computer Vision",
-  "Data Engineering (Airflow, Spark)",
-  "Experiment Tracking (MLflow, Weights&Biases)",
-];
-
-const PROJECTS = [
-  {
-    id: "p1",
-    title: "Production Recommendation System",
-    tech: ["PyTorch", "FastAPI", "Kubernetes"],
-    description:
-      "Designed and deployed a retrieval + ranking pipeline serving 100k QPS with A/B tested uplift of 6% in CTR.",
-    repo: "https://github.com/yourusername/reco-system",
-    live: null,
-  },
-  {
-    id: "p2",
-    title: "NLP — Domain Adaptation for NER",
-    tech: ["Transformers", "Hugging Face", "MLflow"],
-    description:
-      "Reduced annotation requirement by 40% using active learning + domain adaptation. Trained on mixed-precision and served with ONNX runtime.",
-    repo: "https://github.com/yourusername/ner-domain-adapt",
-    live: null,
-  },
-];
-
-const EXPERIENCE = [
-  {
-    role: "Senior ML Engineer",
-    company: "Acme AI",
-    period: "2022 — Present",
-    bullets: [
-      "Led a cross-functional team delivering a low-latency inference service.",
-      "Implemented CI/CD for models using GitHub Actions and model registry.",
-    ],
-  },
-  {
-    role: "ML Engineer",
-    company: "DataLabs",
-    period: "2019 — 2022",
-    bullets: ["Built ETL pipelines and model monitoring for production models."],
-  },
-];
-
-// --- Utility small components ---
-function Badge({ children }) {
-  return (
-    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100">{children}</span>
-  );
-}
-
-function SkillPill({ label }) {
-  return (
-    <div className="px-3 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-sm">{label}</div>
-  );
-}
-
-export default function Portfolio() {
-  const [dark, setDark] = useState(false);
-
-  function toggleDark() {
-    setDark((d) => !d);
-    if (!dark) document.documentElement.classList.add("dark");
-    else document.documentElement.classList.remove("dark");
-  }
-
-  return (
-    <div className={`${dark ? "dark" : ""}`}>
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
-        <div className="max-w-5xl mx-auto p-6 md:p-12">
-          <header className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl md:text-3xl font-extrabold">{PROFILE.name}</h1>
-              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">{PROFILE.title} • {PROFILE.location}</p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <button
-                aria-label="Toggle dark"
-                onClick={toggleDark}
-                className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
-              >
-                {dark ? <Sun size={16} /> : <Moon size={16} />}
-              </button>
-
-              <a href={PROFILE.resume} download className="inline-flex items-center gap-2 px-3 py-2 border rounded-md hover:shadow">
-                <Download size={16} /> <span className="text-sm">Resume</span>
-              </a>
-            </div>
-          </header>
-
-          <section className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="col-span-2">
-              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
-                <h2 className="text-xl font-semibold">About</h2>
-                <p className="mt-3 text-gray-700 dark:text-gray-300">{PROFILE.summary}</p>
-
-                <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-                  {SKILLS.slice(0, 8).map((s) => (
-                    <SkillPill key={s} label={s} />
-                  ))}
-                </div>
-
-                <div className="mt-8">
-                  <h3 className="text-lg font-semibold">Selected Projects</h3>
-                  <div className="mt-4 space-y-4">
-                    {PROJECTS.map((p) => (
-                      <article key={p.id} className="p-4 border rounded-md hover:shadow-sm dark:border-gray-800">
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <h4 className="text-md font-semibold">{p.title}</h4>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{p.description}</p>
-                            <div className="mt-2 flex gap-2 flex-wrap">
-                              {p.tech.map((t) => (
-                                <Badge key={t}>{t}</Badge>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div className="flex flex-col items-end gap-2">
-                            {p.repo && (
-                              <a href={p.repo} target="_blank" rel="noreferrer" className="text-sm hover:underline inline-flex items-center gap-2">
-                                <Github size={14} /> Repo
-                              </a>
-                            )}
-                            {p.live && (
-                              <a href={p.live} target="_blank" rel="noreferrer" className="text-sm hover:underline inline-flex items-center gap-2">
-                                Live
-                              </a>
-                            )}
-                          </div>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            <aside className="col-span-1 sticky top-6 self-start">
-              <div className="p-4 border rounded-md dark:border-gray-800">
-                <h3 className="font-semibold">Contact</h3>
-                <p className="text-sm mt-2">Interested in working together? Reach out via email or LinkedIn.</p>
-
-                <div className="mt-3 flex flex-col gap-2">
-                  <a href={`mailto:${PROFILE.email}`} className="inline-flex items-center gap-2 px-3 py-2 border rounded-md hover:bg-gray-50 dark:hover:bg-gray-800">
-                    <Mail size={14} /> Email
-                  </a>
-                  <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 border rounded-md hover:bg-gray-50 dark:hover:bg-gray-800">
-                    <Linkedin size={14} /> LinkedIn
-                  </a>
-                  <a href={PROFILE.socials.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 border rounded-md hover:bg-gray-50 dark:hover:bg-gray-800">
-                    <Github size={14} /> GitHub
-                  </a>
-                </div>
-
-                <div className="mt-4">
-                  <h4 className="text-sm font-medium">Quick facts</h4>
-                  <ul className="mt-2 text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                    <li>📍 {PROFILE.location}</li>
-                    <li>✉️ <a href={`mailto:${PROFILE.email}`} className="underline">{PROFILE.email}</a></li>
-                    <li>🧾 <a href={PROFILE.resume} download className="underline">Download resume</a></li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-4 p-4 border rounded-md dark:border-gray-800">
-                <h4 className="font-semibold">Experience</h4>
-                <div className="mt-3 space-y-3">
-                  {EXPERIENCE.map((e) => (
-                    <div key={e.company}>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-medium">{e.role}</p>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">{e.company}</p>
-                        </div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">{e.period}</p>
-                      </div>
-                      <ul className="mt-2 text-sm text-gray-600 dark:text-gray-400 list-disc ml-4">
-                        {e.bullets.map((b, idx) => (
-                          <li key={idx}>{b}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-                <p>Built with React + Tailwind</p>
-              </div>
-            </aside>
-          </section>
-
-          <footer className="mt-12 border-t pt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-            <div className="flex items-center justify-center gap-4">
-              <a href={PROFILE.socials.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">
-                <Github size={16} /> GitHub
-              </a>
-              <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">
-                <Linkedin size={16} /> LinkedIn
-              </a>
-              <a href={`mailto:${PROFILE.email}`} className="inline-flex items-center gap-2">
-                <Mail size={16} /> Email
-              </a>
-            </div>
-
-            <p className="mt-4">© {new Date().getFullYear()} {PROFILE.name}. All rights reserved.</p>
-          </footer>
-        </div>
-      </main>
+  <section>
+    <h2>📂 Projects</h2>
+    <div class="project">
+      <h3>Predictive Maintenance System</h3>
+      <p>Built a model using sensor data to predict equipment failure, reducing downtime by 30%. Tools: Python, Scikit-learn, XGBoost.</p>
+      <a href="https://github.com/jmo-199/predictive-maintenance">View on GitHub</a>
     </div>
-  );
-}
+    <div class="project">
+      <h3>AI-Powered Resume Parser</h3>
+      <p>Developed an NLP pipeline to extract structured data from resumes using spaCy and BERT.</p>
+      <a href="https://github.com/jmo-199/resume-parser">View on GitHub</a>
+    </div>
+    <div class="project">
+      <h3>Customer Churn Prediction</h3>
+      <p>Analyzed customer behavior and built a churn prediction model with 85% accuracy. Tools: Pandas, LightGBM, Tableau.</p>
+      <a href="https://github.com/jmo-199/churn-model">View on GitHub</a>
+    </div>
+  </section>
 
+  <section>
+    <h2>🏢 Organizations & Contributions</h2>
+    <div class="org">
+      <h3>OpenML Contributor</h3>
+      <p>Contributed to open-source ML benchmarking datasets and tools.</p>
+    </div>
+    <div class="org">
+      <h3>AI4Good Volunteer</h3>
+      <p>Worked on projects focused on climate modeling and disaster prediction using ML.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>🛠 Skills & Tools</h2>
+    <p><strong>Languages:</strong> Python, SQL, R</p>
+    <p><strong>Libraries:</strong> TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy</p>
+    <p><strong>Tools:</strong> Jupyter, Git, Docker, AWS, Streamlit</p>
+  </section>
+
+  <section>
+    <h2>📫 Contact</h2>
+    <p>Email: jason.moore@example.com</p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/jasonmoore">linkedin.com/in/jasonmoore</a></p>
+    <p>GitHub: <a href="https://github.com/jmo-199">github.com/jmo-199</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Jason Moore. Built with 💡 and GitHub Pages.</p>
+  </footer>
+
+</body>
+</html>
