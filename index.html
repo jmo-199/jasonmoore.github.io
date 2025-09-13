@@ -1,110 +1,716 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jason Moore | AI/ML Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background: #1f1f1f;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 0.5rem;
-    }
-    .project, .org {
-      margin-bottom: 1.5rem;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #1f1f1f;
-      color: white;
-    }
-    a {
-      color: #007acc;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Data Scientist Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: block;
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #f0f0f0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: #666;
+        }
+
+        .skill-list li {
+            margin: 0.5rem 0;
+            padding: 0.3rem 0;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .timeline-item h3 {
+            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .company {
+            color: #999;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            border: 2px solid #667eea;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Your Name</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <header>
-    <h1>Jason Moore</h1>
-    <p>Machine Learning Engineer | Data Scientist | AI Enthusiast</p>
-  </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Data Scientist & ML Engineer</h1>
+            <p>Transforming data into actionable insights and building intelligent solutions</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </section>
 
-  <section>
-    <h2>👨‍💻 Bio</h2>
-    <p>
-      I'm a passionate machine learning engineer with a background in computer science and a deep love for solving real-world problems using data. My expertise spans supervised and unsupervised learning, deep learning, and NLP. I thrive on building scalable models and deploying intelligent systems.
-    </p>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <img src="https://via.placeholder.com/300x300/667eea/ffffff?text=Your+Photo" alt="Profile Picture" class="profile-img">
+                <div class="bio">
+                    <p>I'm a passionate data scientist with 5+ years of experience in machine learning, statistical analysis, and data visualization. I specialize in developing predictive models and extracting meaningful insights from complex datasets.</p>
+                    
+                    <p>My expertise spans across various domains including finance, healthcare, and e-commerce, where I've successfully implemented ML solutions that have driven business growth and operational efficiency.</p>
+                    
+                    <p>I hold a Master's degree in Data Science and am constantly learning new technologies to stay at the forefront of this rapidly evolving field.</p>
 
-  <section>
-    <h2>📂 Projects</h2>
-    <div class="project">
-      <h3>Predictive Maintenance System</h3>
-      <p>Built a model using sensor data to predict equipment failure, reducing downtime by 30%. Tools: Python, Scikit-learn, XGBoost.</p>
-      <a href="https://github.com/jmo-199/predictive-maintenance">View on GitHub</a>
-    </div>
-    <div class="project">
-      <h3>AI-Powered Resume Parser</h3>
-      <p>Developed an NLP pipeline to extract structured data from resumes using spaCy and BERT.</p>
-      <a href="https://github.com/jmo-199/resume-parser">View on GitHub</a>
-    </div>
-    <div class="project">
-      <h3>Customer Churn Prediction</h3>
-      <p>Analyzed customer behavior and built a churn prediction model with 85% accuracy. Tools: Pandas, LightGBM, Tableau.</p>
-      <a href="https://github.com/jmo-199/churn-model">View on GitHub</a>
-    </div>
-  </section>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Programming</h3>
+                            <ul class="skill-list">
+                                <li>Python</li>
+                                <li>R</li>
+                                <li>SQL</li>
+                                <li>Scala</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Machine Learning</h3>
+                            <ul class="skill-list">
+                                <li>Scikit-learn</li>
+                                <li>TensorFlow</li>
+                                <li>PyTorch</li>
+                                <li>XGBoost</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Data Tools</h3>
+                            <ul class="skill-list">
+                                <li>Pandas</li>
+                                <li>NumPy</li>
+                                <li>Apache Spark</li>
+                                <li>Tableau</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Cloud & DevOps</h3>
+                            <ul class="skill-list">
+                                <li>AWS</li>
+                                <li>Docker</li>
+                                <li>Git</li>
+                                <li>MLflow</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2>🏢 Organizations & Contributions</h2>
-    <div class="org">
-      <h3>OpenML Contributor</h3>
-      <p>Contributed to open-source ML benchmarking datasets and tools.</p>
-    </div>
-    <div class="org">
-      <h3>AI4Good Volunteer</h3>
-      <p>Worked on projects focused on climate modeling and disaster prediction using ML.</p>
-    </div>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Customer Churn Prediction</h3>
+                    <p>Built a machine learning model to predict customer churn for a telecom company, achieving 94% accuracy. Implemented feature engineering and model interpretability techniques to provide actionable business insights.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">SHAP</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub</a>
+                        <a href="#" class="project-link">Live Demo</a>
+                    </div>
+                </div>
 
-  <section>
-    <h2>🛠 Skills & Tools</h2>
-    <p><strong>Languages:</strong> Python, SQL, R</p>
-    <p><strong>Libraries:</strong> TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy</p>
-    <p><strong>Tools:</strong> Jupyter, Git, Docker, AWS, Streamlit</p>
-  </section>
+                <div class="project-card">
+                    <h3>Stock Price Forecasting</h3>
+                    <p>Developed a deep learning model using LSTM networks to forecast stock prices. Integrated real-time data feeds and deployed the model as a web application with interactive visualizations.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">LSTM</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Plotly</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub</a>
+                        <a href="#" class="project-link">Live Demo</a>
+                    </div>
+                </div>
 
-  <section>
-    <h2>📫 Contact</h2>
-    <p>Email: jason.moore@example.com</p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/jasonmoore">linkedin.com/in/jasonmoore</a></p>
-    <p>GitHub: <a href="https://github.com/jmo-199">github.com/jmo-199</a></p>
-  </section>
+                <div class="project-card">
+                    <h3>NLP Sentiment Analysis</h3>
+                    <p>Created a sentiment analysis system for social media monitoring using transformer models. Processed over 1M tweets daily and provided real-time sentiment dashboards for brand monitoring.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">BERT</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Apache Kafka</span>
+                        <span class="tech-tag">Elasticsearch</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub</a>
+                        <a href="#" class="project-link">Medium Article</a>
+                    </div>
+                </div>
 
-  <footer>
-    <p>© 2025 Jason Moore. Built with 💡 and GitHub Pages.</p>
-  </footer>
+                <div class="project-card">
+                    <h3>Recommendation Engine</h3>
+                    <p>Built a hybrid recommendation system combining collaborative filtering and content-based approaches. Improved user engagement by 35% for an e-commerce platform with 100K+ users.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Apache Spark</span>
+                        <span class="tech-tag">MLlib</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub</a>
+                        <a href="#" class="project-link">Case Study</a>
+                    </div>
+                </div>
 
+                <div class="project-card">
+                    <h3>Computer Vision for Medical Imaging</h3>
+                    <p>Developed a CNN-based system for automated detection of anomalies in X-ray images. Achieved 96% accuracy and reduced diagnosis time by 40% in collaboration with healthcare professionals.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">DICOM</span>
+                        <span class="tech-tag">FastAPI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub</a>
+                        <a href="#" class="project-link">Research Paper</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Real-time Fraud Detection</h3>
+                    <p>Implemented a real-time fraud detection system for financial transactions using ensemble methods and streaming data processing. Reduced false positives by 50% while maintaining high recall.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Apache Kafka</span>
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub</a>
+                        <a href="#" class="project-link">Architecture</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Senior Data Scientist</h3>
+                    <div class="date">2022 - Present</div>
+                    <div class="company">Tech Innovators Inc.</div>
+                    <p>Lead a team of 4 data scientists in developing ML solutions for client projects. Spearheaded the development of a recommendation system that increased customer engagement by 40%. Mentored junior team members and established best practices for model deployment and monitoring.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Data Scientist</h3>
+                    <div class="date">2020 - 2022</div>
+                    <div class="company">FinTech Solutions LLC</div>
+                    <p>Developed predictive models for risk assessment and fraud detection. Built automated reporting systems that reduced manual work by 60%. Collaborated with product teams to integrate ML models into production applications.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Junior Data Analyst</h3>
+                    <div class="date">2019 - 2020</div>
+                    <div class="company">Healthcare Analytics Corp</div>
+                    <p>Analyzed patient data to identify trends and improve treatment outcomes. Created interactive dashboards for clinical teams. Conducted statistical analysis for research studies and clinical trials.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Data Science Intern</h3>
+                    <div class="date">2018 - 2019</div>
+                    <div class="company">StartupAI</div>
+                    <p>Assisted in developing machine learning models for natural language processing tasks. Participated in data collection and preprocessing activities. Gained hands-on experience with various ML frameworks and tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizations & Certifications Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Organizations & Certifications</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Professional Organizations</h3>
+                    <ul class="skill-list">
+                        <li>Member, Association for Computing Machinery (ACM)</li>
+                        <li>Member, IEEE Computer Society</li>
+                        <li>Active Contributor, Kaggle Community</li>
+                        <li>Volunteer, DataKind</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Certifications</h3>
+                    <ul class="skill-list">
+                        <li>AWS Certified Machine Learning - Specialty</li>
+                        <li>Google Cloud Professional ML Engineer</li>
+                        <li>Microsoft Azure AI Engineer Associate</li>
+                        <li>TensorFlow Developer Certificate</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Publications & Talks</h3>
+                    <ul class="skill-list">
+                        <li>Speaker at PyData Conference 2023</li>
+                        <li>Published in Journal of ML Research</li>
+                        <li>Guest on Data Science Podcast</li>
+                        <li>Regular Medium contributor</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Education</h3>
+                    <ul class="skill-list">
+                        <li>M.S. Data Science, Stanford University</li>
+                        <li>B.S. Computer Science, UC Berkeley</li>
+                        <li>Coursework: Deep Learning Specialization</li>
+                        <li>Coursework: Advanced Statistics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm always interested in new opportunities and collaborations. Whether you have a project in mind or just want to connect, feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">
+                        📧 Email
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" class="contact-link">
+                        💼 LinkedIn
+                    </a>
+                    <a href="https://github.com/yourusername" class="contact-link">
+                        🐱 GitHub
+                    </a>
+                    <a href="https://twitter.com/yourusername" class="contact-link">
+                        🐦 Twitter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
