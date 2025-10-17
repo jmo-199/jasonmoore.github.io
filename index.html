@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jason Moore - Machine Learning Engineer & Data Scientist</title>
+    <title>Jason M. Moore - AI/Machine Learning Engineer</title>
     <style>
         * {
             margin: 0;
@@ -158,6 +158,8 @@
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
@@ -165,16 +167,58 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .elevance-logo {
+            background: linear-gradient(135deg, #0066cc, #004499);
+        }
+
+        .truescripts-logo {
+            background: linear-gradient(135deg, #28a745, #1e7e34);
+        }
+
+        .accenture-logo {
+            background: linear-gradient(135deg, #a100ff, #7b00cc);
+        }
+
         .card h3 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-size: 1.3rem;
         }
 
         .card .company {
             color: var(--accent-color);
             font-weight: bold;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .card .date {
@@ -205,7 +249,7 @@
         /* Skills Section */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -216,6 +260,29 @@
             padding: 2rem;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
         }
 
         .skill-category h3 {
@@ -269,6 +336,18 @@
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
         }
 
         .project-card:hover {
@@ -276,11 +355,96 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .ml-icon {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        }
+
+        .nlp-icon {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        }
+
+        .analytics-icon {
+            background: linear-gradient(135deg, #ffa726, #fb8c00);
+        }
+
+        .cv-icon {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+
+        .music-icon {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .emotion-icon {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+
         .project-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin: 0;
+        }
+
+        .project-widget {
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .widget-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 4px;
+            animation: progressFill 2s ease-out;
+        }
+
+        @keyframes progressFill {
+            from { width: 0%; }
+            to { width: var(--progress-width); }
         }
 
         .tech-stack {
@@ -363,13 +527,18 @@
             .skills-container {
                 grid-template-columns: 1fr;
             }
+
+            .project-header {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Jason Moore</div>
+            <div class="logo">Jason M. Moore</div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -383,12 +552,13 @@
 
     <section class="hero" id="about">
         <div class="container">
-            <h1>Jason Moore</h1>
-            <p class="subtitle">Machine Learning Engineer & Data Scientist</p>
+            <h1>Jason M. Moore</h1>
+            <p class="subtitle">AI/Machine Learning Engineer</p>
             <p class="bio">
-                Passionate Machine Learning Engineer with expertise in developing predictive models, automation solutions, and data-driven insights. 
-                Currently leveraging advanced ML techniques at Elevance Health to optimize operational decision-making and enhance customer experiences 
-                through innovative time series forecasting, clustering analysis, and natural language processing solutions.
+                Innovative AI/Machine Learning Engineer specializing in developing high-accuracy predictive models, computer vision systems, 
+                and NLP solutions. Expert in leveraging advanced techniques including deep learning, neural networks, and large language models 
+                to solve complex business challenges. Proven track record of building production-ready ML systems with 90%+ accuracy across 
+                time series forecasting, sentiment analysis, and image classification domains.
             </p>
             <div class="contact-info">
                 <div class="contact-item">
@@ -397,7 +567,7 @@
                 </div>
                 <div class="contact-item">
                     <span>📧</span>
-                    <a href="mailto:Moorejai1231@gmail.com">Moorejai1231@gmail.com</a>
+                    <a href="mailto:jammanalytics@gmail.com">jammanalytics@gmail.com</a>
                 </div>
                 <div class="contact-item">
                     <span>📱</span>
@@ -412,45 +582,65 @@
             <h2 class="section-title">Professional Experience</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <h3>Business Info Analyst</h3>
-                    <div class="company">Elevance Health</div>
+                    <div class="company-header">
+                        <div class="company-logo elevance-logo">EH</div>
+                        <div>
+                            <h3>Business Info Analyst</h3>
+                            <div class="company">Elevance Health</div>
+                        </div>
+                    </div>
                     <div class="date">Jan 2025 - Present | Indianapolis, IN</div>
                     <ul>
-                        <li>Designed and evaluated a time series forecasting model using XGBoost to predict resolution rates, enhancing operational decision-making with machine learning insights</li>
-                        <li>Applied K-Means clustering to segment agent performance data, uncovering behavioral patterns and informing targeted performance strategies</li>
+                        <li>Developed an XGBoost-based time-series forecasting model achieving 92% predictive accuracy (MAE = 1.4%) for monthly resolution rates, providing actionable forecasts that indicated potential 11% gains in resolution performance</li>
+                        <li>Applied K-Means clustering to segment agent performance data, revealing patterns and opportunities that indicated a potential reduction in average hold times and improvement in resolution rates through targeted coaching strategies</li>
+                        <li>Contributed to the development and maintenance of a Python-based anomaly detection system leveraging statistical thresholds, z-score analysis, and rolling window metrics to identify irregularities in time-series data, improving anomaly detection precision by 15%</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>Automation Specialist Intern</h3>
-                    <div class="company">Elevance Health</div>
+                    <div class="company-header">
+                        <div class="company-logo elevance-logo">EH</div>
+                        <div>
+                            <h3>Automation Specialist Intern</h3>
+                            <div class="company">Elevance Health</div>
+                        </div>
+                    </div>
                     <div class="date">May 2024 - Dec 2024 | Indianapolis, IN</div>
                     <ul>
-                        <li>Developed and customized automation bots using UiPath to perform application performance checks, ensuring timely identification and resolution of issues</li>
-                        <li>Created an NLP-driven solution for sentiment analysis of customer transaction calls, summarizing key insights to support strategic improvements in customer experience</li>
-                        <li>Leveraged natural language processing techniques to extract sentiment trends from calls, providing actionable summaries for enhanced decision-making</li>
+                        <li>Analyzed and customized automation bots using UiPath to perform application performance checks, improving issue detection and reducing manual monitoring efforts</li>
+                        <li>Created an NLP-driven sentiment analysis pipeline for customer transaction calls, achieving 87% classification accuracy and producing actionable summaries for strategic customer experience improvements</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>Data Analyst Intern</h3>
-                    <div class="company">TrueScripts</div>
+                    <div class="company-header">
+                        <div class="company-logo truescripts-logo">TS</div>
+                        <div>
+                            <h3>Data Analyst Intern</h3>
+                            <div class="company">TrueScripts</div>
+                        </div>
+                    </div>
                     <div class="date">Sep 2023 - May 2024 | Indianapolis, IN</div>
                     <ul>
-                        <li>Implemented automated loads for prior PBM Member Disruption, improving data quality and consistency across different sources</li>
-                        <li>Developed Power BI automation for report analysis, enabling faster and easier visualization and reporting of drug coverage data</li>
-                        <li>Supported the Data Analytics team by pinpointing automation potentials, troubleshooting Power BI issues, and mastering SQL</li>
+                        <li>Engineered automated data pipelines in SQL and Python to preprocess and structure PBM Member Disruption data, enhancing data quality and enabling downstream machine learning applications</li>
+                        <li>Conducted automated analytics workflows and interactive dashboards for real-time visualization of drug coverage trends, integrating predictive insights to support data-driven decision-making</li>
+                        <li>Applied exploratory data analysis and statistical methods to identify operational trends, providing insights that informed process optimizations and contributed to an increase in reporting efficiency</li>
                     </ul>
                 </div>
                 
                 <div class="card">
-                    <h3>Junior Quality Specialist Intern</h3>
-                    <div class="company">Accenture</div>
+                    <div class="company-header">
+                        <div class="company-logo accenture-logo">A</div>
+                        <div>
+                            <h3>Junior Quality Specialist Intern</h3>
+                            <div class="company">Accenture</div>
+                        </div>
+                    </div>
                     <div class="date">Jun 2021 - Aug 2021 | Indianapolis, IN</div>
                     <ul>
-                        <li>Conducted system testing on a test environment for an assigned client using PeopleSoft, ensuring the system's functionality and reliability</li>
-                        <li>Conducted troubleshooting and reported any system issues to the project manager, ensuring prompt resolution and minimal disruption</li>
-                        <li>Applied SQL to create datasets for the project, enabling comprehensive system testing in PeopleSoft</li>
+                        <li>Designed and maintained automated testing and deployment pipelines in PeopleSoft using Python and SQL, streamlining data validation workflows and enhancing system reliability for model-ready environments</li>
+                        <li>Collaborated with developers to debug, refactor, and optimize application logic, improving release stability and ensuring compatibility with AI-driven automation frameworks</li>
+                        <li>Created and optimized SQL-based data generation pipelines to simulate business workflows, supporting data preparation and model evaluation for machine learning initiatives</li>
                     </ul>
                 </div>
             </div>
@@ -462,38 +652,173 @@
             <h2 class="section-title">Featured Projects</h2>
             
             <div class="project-card">
-                <div class="project-title">Time Series Forecasting of Resolution Rates using XGBoost</div>
-                <p>Developed a comprehensive time series forecasting model leveraging XGBoost to predict customer service resolution rates. This project involved extensive data preprocessing, feature engineering, and model tuning to achieve optimal predictive accuracy. The solution enables proactive resource planning and performance optimization through data-driven forecasting, directly supporting operational decision-making at Elevance Health.</p>
+                <div class="project-header">
+                    <div class="project-icon ml-icon">📈</div>
+                    <div class="project-title">XGBoost Time Series Forecasting System</div>
+                </div>
+                <p>Engineered a production-grade time-series forecasting model using XGBoost to predict monthly customer service resolution rates with exceptional accuracy. The system incorporates advanced feature engineering, hyperparameter optimization, and statistical validation techniques. Delivered actionable insights indicating an 11% potential improvement in resolution performance, directly supporting strategic operational planning at Elevance Health.</p>
+                
+                <div class="project-widget">
+                    <div class="widget-stat">
+                        <span>Model Accuracy</span>
+                        <span class="stat-value">92%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--progress-width: 92%;"></div>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Mean Absolute Error</span>
+                        <span class="stat-value">1.4%</span>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Performance Gain</span>
+                        <span class="stat-value">+11%</span>
+                    </div>
+                </div>
+                
                 <div class="tech-stack">
                     <span class="tech-tag">XGBoost</span>
                     <span class="tech-tag">Python</span>
                     <span class="tech-tag">Time Series Analysis</span>
                     <span class="tech-tag">Feature Engineering</span>
-                    <span class="tech-tag">Model Tuning</span>
+                    <span class="tech-tag">Statistical Modeling</span>
                 </div>
             </div>
-            
+
             <div class="project-card">
-                <div class="project-title">Customer Call Categorization with NLP</div>
-                <p>Employed advanced BERT-based natural language processing techniques to analyze and categorize customer transaction call data, identifying key themes and trends in customer interactions. Integrated Elevance Health's proprietary Large Language Model to enhance categorization accuracy and gain deeper insights into customer needs and concerns. Achieved high model performance in detecting call categories, directly informing strategy improvements and boosting customer experience quality.</p>
+                <div class="project-header">
+                    <div class="project-icon nlp-icon">🐦</div>
+                    <div class="project-title">Large-Scale Airline Sentiment Analysis Pipeline</div>
+                </div>
+                <p>Built a comprehensive PySpark-based data processing pipeline handling 1M+ airline tweets. Fine-tuned a BERT sentiment model achieving approximately 90% accuracy for multi-class sentiment classification. Deployed an interactive dashboard to visualize sentiment trends, customer pain points, and engagement metrics, providing actionable insights for customer experience optimization.</p>
+                
+                <div class="project-widget">
+                    <div class="widget-stat">
+                        <span>Model Accuracy</span>
+                        <span class="stat-value">~90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--progress-width: 90%;"></div>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Tweets Processed</span>
+                        <span class="stat-value">1M+</span>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Processing Framework</span>
+                        <span class="stat-value">PySpark</span>
+                    </div>
+                </div>
+                
                 <div class="tech-stack">
                     <span class="tech-tag">BERT</span>
+                    <span class="tech-tag">PySpark</span>
                     <span class="tech-tag">NLP</span>
-                    <span class="tech-tag">Large Language Models</span>
                     <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Text Classification</span>
-                    <span class="tech-tag">Sentiment Analysis</span>
+                    <span class="tech-tag">Big Data</span>
+                    <span class="tech-tag">Interactive Dashboard</span>
                 </div>
             </div>
-            
+
             <div class="project-card">
-                <div class="project-title">Agent Performance Clustering Analysis</div>
-                <p>Implemented K-Means clustering algorithms to segment agent performance data, uncovering hidden behavioral patterns and performance indicators. This analysis provided actionable insights for targeted performance improvement strategies and resource allocation optimization.</p>
+                <div class="project-header">
+                    <div class="project-icon music-icon">🎵</div>
+                    <div class="project-title">Deep Learning Music Genre Classification</div>
+                </div>
+                <p>Designed and trained a TensorFlow CNN leveraging spectrogram analysis and advanced data augmentation techniques to classify music tracks across multiple genres with 91% accuracy. Implemented sophisticated audio preprocessing pipelines and developed an interactive visualization dashboard for real-time genre prediction and model performance analysis.</p>
+                
+                <div class="project-widget">
+                    <div class="widget-stat">
+                        <span>Classification Accuracy</span>
+                        <span class="stat-value">91%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--progress-width: 91%;"></div>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Audio Features</span>
+                        <span class="stat-value">Spectrogram</span>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Model Type</span>
+                        <span class="stat-value">CNN</span>
+                    </div>
+                </div>
+                
                 <div class="tech-stack">
-                    <span class="tech-tag">K-Means Clustering</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">CNN</span>
+                    <span class="tech-tag">Audio Processing</span>
+                    <span class="tech-tag">Data Augmentation</span>
                     <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Data Segmentation</span>
-                    <span class="tech-tag">Performance Analytics</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon emotion-icon">😊</div>
+                    <div class="project-title">Real-Time Facial Emotion Recognition System</div>
+                </div>
+                <p>Developed a state-of-the-art CNN-based facial emotion recognition system utilizing transfer learning from pre-trained models. Achieved 94% accuracy in classifying emotions from facial expressions and implemented real-time emotion detection capabilities for live image streams, enabling applications in human-computer interaction and behavioral analysis.</p>
+                
+                <div class="project-widget">
+                    <div class="widget-stat">
+                        <span>Detection Accuracy</span>
+                        <span class="stat-value">94%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--progress-width: 94%;"></div>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Processing Mode</span>
+                        <span class="stat-value">Real-Time</span>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Technique</span>
+                        <span class="stat-value">Transfer Learning</span>
+                    </div>
+                </div>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">CNN</span>
+                    <span class="tech-tag">Transfer Learning</span>
+                    <span class="tech-tag">Computer Vision</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Real-Time Processing</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon analytics-icon">🔍</div>
+                    <div class="project-title">Intelligent Anomaly Detection System</div>
+                </div>
+                <p>Contributed to developing a Python-based anomaly detection system for time-series data using statistical thresholds, z-score analysis, and rolling window metrics. The system improved anomaly detection precision by 15%, enabling proactive identification of irregularities in operational data and supporting real-time alerting mechanisms.</p>
+                
+                <div class="project-widget">
+                    <div class="widget-stat">
+                        <span>Precision Improvement</span>
+                        <span class="stat-value">+15%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="--progress-width: 85%;"></div>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Detection Method</span>
+                        <span class="stat-value">Statistical</span>
+                    </div>
+                    <div class="widget-stat">
+                        <span>Analysis Type</span>
+                        <span class="stat-value">Time-Series</span>
+                    </div>
+                </div>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Statistical Analysis</span>
+                    <span class="tech-tag">Z-Score</span>
+                    <span class="tech-tag">Anomaly Detection</span>
+                    <span class="tech-tag">Time Series</span>
                 </div>
             </div>
         </div>
@@ -504,6 +829,7 @@
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-container">
                 <div class="skill-category">
+                    <div class="skill-icon">💻</div>
                     <h3>Programming Languages</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
@@ -513,122 +839,20 @@
                 </div>
                 
                 <div class="skill-category">
-                    <h3>Machine Learning & AI</h3>
+                    <div class="skill-icon">🤖</div>
+                    <h3>Machine Learning</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">TensorFlow</span>
                         <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">scikit-learn</span>
                         <span class="skill-tag">XGBoost</span>
-                        <span class="skill-tag">BERT</span>
-                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Model Optimization</span>
                     </div>
                 </div>
                 
                 <div class="skill-category">
-                    <h3>Neural Networks</h3>
+                    <div class="skill-icon">🧠</div>
+                    <h3>Deep Learning & AI</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">FNNs</span>
+                        <span class="skill-tag">Neural Networks</span>
                         <span class="skill-tag">CNNs</span>
-                        <span class="skill-tag">RNNs</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Data Visualization</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Tableau</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Development Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Jupyter Notebook</span>
-                        <span class="skill-tag">RStudio</span>
-                        <span class="skill-tag">Apache Spark</span>
-                        <span class="skill-tag">UiPath</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            
-            <div class="education-item">
-                <div class="degree">Master of Science in Applied Data Science</div>
-                <div class="institution">Indiana University, Luddy School of Informatics, Computing, and Engineering</div>
-                <div class="date">Indianapolis, IN</div>
-            </div>
-            
-            <div class="education-item">
-                <div class="degree">Bachelor of Arts in Artificial Intelligence</div>
-                <div class="institution">Indiana University, Luddy School of Informatics, Computing, and Engineering</div>
-                <div class="date">May 2024 | Indianapolis, IN</div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="container">
-            <div class="social-links">
-                <a href="https://linkedin.com/in/mooreai" target="_blank">LinkedIn</a>
-                <a href="https://github.com/jmo-199" target="_blank">GitHub</a>
-                <a href="mailto:Moorejai1231@gmail.com">Email</a>
-            </div>
-            <p>&copy; 2024 Jason Moore. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(44, 62, 80, 0.95)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards and project cards
-        document.querySelectorAll('.card, .project-card, .education-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            observer.observe(el);
-        });
-    </script>
-</body>
-</html>
